@@ -33,7 +33,16 @@ function [tau, pvalue] = kendalltau(img, W, dx, dy)
 
 mfn = [ mfilename('fullpath') '.' mexext ];
 cfn = [ mfilename('fullpath') '.c' ];
-
- %   mex('-largeArrayDims', cfn, '-output', mfn);
-    
+if ~exist(cfn, 'file')
+    error('Kendalltau implementation missing');
+    return
+end
+if ~exist(mfn, 'file')
+    % Tested on Linux with gcc
+    % Tested on Windows 7 with Windows SDK 7.1
+    mex('CFLAGS=\$CFLAGS -fopenmp', ...
+        'LDFLAGS=\$LDFLAGS -lgomp -fopenmp', ...
+        '-DMATLAB_MEX_FILE', ...
+        cfn, '-output', mfn);
+end    
 [tau, pvalue] = kendalltau(img, W, dx, dy);
