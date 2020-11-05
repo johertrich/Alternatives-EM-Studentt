@@ -13,11 +13,11 @@ close all;
 addpath('hom_area_detection')
 addpath('algorithms')
 rng(15)
+
 % Load image
 img= imresize(double(rgb2gray(imread('images/muehle_klein.png'))),1);
 
-for nu=[1,5]
-    
+for nu=[1,5]    
     noise=10*randn(size(img))./sqrt(chi2rnd(nu,size(img))/nu);
     
     img_nse = img + noise;
@@ -35,7 +35,7 @@ for nu=[1,5]
             if sum(abs(bloc(:))) == noise_info.W*noise_info.W
                 A = reshape(img_nse(l_block_start:l_block_start-1+noise_info.W, k_block_start:k_block_start-1+noise_info.W), [1,1, length(bloc(:))]);
                 X=squeeze(A)';
-                [mu_r,Sigma_r,nu_r]=iterate_studentT(X,size(A,2),'GMMF',300,1);
+                [mu_r,nu_r,Sigma_r]=iterate_studentT(X,size(A,2),'GMMF',300,1);
                 S = [S; Sigma_r] ;
                 N = [N; nu_r];
                 M = [M; mu_r];
@@ -53,16 +53,18 @@ for nu=[1,5]
     hist(N(:)), axis square
     h = findobj(gca,'Type','patch');
     set(h,'FaceColor',[.5 .5 .5],'EdgeColor','k')
-    title(['Histogram nu. nu=' num2str(nu)])
+    %title(['Histogram nu. nu=' num2str(nu)])
+    set(gca,'FontSize',13)
     figure
     hist(S(:)), axis square
     h = findobj(gca,'Type','patch');
     set(h,'FaceColor',[.5 .5 .5],'EdgeColor','k')
-    title(['Histogram sigma. nu=' num2str(nu)])
+    %title(['Histogram sigma. nu=' num2str(nu)])
+    set(gca,'FontSize',13)
     
     disp(char(['Estimated nu = ', num2str(mean(N))]))
     disp(char(['geometric nu = ', num2str(geomean(N))]))
-    disp(char(['Estimated sigma = ', num2str(mean(S))]))
-    disp(char(['geometric sigma = ', num2str(geomean(S))]))
+    disp(char(['Estimated sigma squared = ', num2str(mean(S))]))
+    disp(char(['geometric sigma squared = ', num2str(geomean(S))]))
     
 end
