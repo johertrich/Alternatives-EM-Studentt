@@ -3,7 +3,8 @@
 % M. Hasannasab, J. Hertrich, F. Laus, and G. Steidl. 
 % Alternatives to the EM algorithm for ML-estimation of location, scatter
 % matrix and degree of freedom of the student-t distribution.
-% ArXiv preprint arXiv:1910.06623, 2019.
+% Numerical Algorithms, 2020.
+% DOI: https://doi.org/10.1007/s11075-020-00959-w
 %
 % If you use this code, please cite the paper.
 %

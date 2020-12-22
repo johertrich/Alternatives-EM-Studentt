@@ -1,5 +1,13 @@
-This code belongs to the paper [1]. Please cite [1], if you use this code.
-It contains an implementation of the accelerations of the EM algorithm from [1]. Further,
+ALTERNATIVES TO THE EM ALGORITHN FOR ML-ESTIMATION OF LOCATION, SCATTER MATRIX AND DEGREE OF FREEDOM OF THE STUDENT-T DISTRIBUTION
+
+
+This code belongs to the paper [1]. It is available at
+https://doi.org/10.1007/s11075-020-00959-w
+An Arxiv-Preprint is avialble at
+https://arxiv.org/abs/1910.06623
+Please cite [1], if you use this code.
+
+The code contains an implementation of the accelerations of the EM algorithm from [1]. Further,
 the SQUAREM [4] and DAAREM [2] acceleration are applied to the algorithms and an application for noise
 level estimation is provided. For more details see [1].
 For the noise level estimation, we use functions to detect homogenous areas. The code of these functions is part
@@ -388,7 +396,9 @@ Exemplary results are given in Table 5 and 6 in [1].
 [1] M. Hasannasab, J. Hertrich, F. Laus, and G. Steidl. 
 Alternatives to the EM algorithm for ML-estimation of location, scatter matrix and degree of freedom 
 of the student-t distribution.
-ArXiv preprint arXiv:1910.06623, 2019.
+Numerical Algorithms, 2020.
+DOI: https://doi.org/10.1007/s11075-020-00959-w
+ArXiv preprint available: arXiv:1910.06623.
 
 [2] N. C. Henderson and R. Varadhan. 
 Damped Anderson acceleration with restarts and monotonicity control for accelerating EM and EM-like algorithms.
